@@ -1,12 +1,13 @@
 # cf CLI Workers Builds test
 
-This repository verifies that the new Cloudflare `cf deploy` command runs in
-Workers Builds without using Wrangler.
+This repository verifies that the new Cloudflare `cf deploy` command builds and
+deploys a Worker from Workers Builds.
 
 Workers Builds configuration:
 
-- Build command: `npm run build`
-- Deploy command: `npm run deploy`
+- Build command: *(empty)*
+- Deploy command: `npx cf deploy`
 
-The build script writes the Worker to Cloudflare's Build Output API format.
-The deploy script runs `cf deploy --prebuilt` against that output.
+The project uses the Cloudflare Vite plugin as the build implementation consumed
+by `cf deploy`. Workers Builds invokes the pinned local `cf` dependency through
+`npx`.
